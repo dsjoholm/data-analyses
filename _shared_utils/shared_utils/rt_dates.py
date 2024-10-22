@@ -7,6 +7,8 @@ from typing import Literal
 
 # HQTAs and RT speedmaps
 DATES = {
+    "jan2014": "2014-01-01",
+    "jan2020": "2020-01-01",
     "feb2022": "2022-02-08",
     "mar2022": "2022-03-30",  # "2022-03-23"?
     # "apr2022": "", # None
