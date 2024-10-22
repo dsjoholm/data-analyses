@@ -1,10 +1,9 @@
 from shared_utils import rt_dates
 import datetime as dt
 
-analysis_date = rt_dates.DATES["sep2024"]
+analysis_date = rt_dates.DATES["jan2014"]
 
-GCS_FILE_PATH = ("gs://calitp-analytics-data/data-analyses/"
-                 "high_quality_transit_areas/")
+GCS_FILE_PATH = ("/Volumes/One Touch/Transit_Job/Exports")
 PROJECT_CRS = "EPSG:3310"
 HQTA_SEGMENT_LENGTH = 1_250 # meters
 SEGMENT_BUFFER_METERS = 50 # buffer around segment to sjoin to stops
