@@ -3,7 +3,7 @@ import datetime as dt
 
 analysis_date = rt_dates.DATES["jan2014"]
 
-GCS_FILE_PATH = ("/Volumes/One Touch/Transit_Job/Exports")
+GCS_FILE_PATH = ("/Volumes/One Touch/Transit_Job/GTFS_Only")
 PROJECT_CRS = "EPSG:3310"
 HQTA_SEGMENT_LENGTH = 1_250 # meters
 SEGMENT_BUFFER_METERS = 50 # buffer around segment to sjoin to stops
