@@ -17,7 +17,8 @@ import _utils
 from calitp_data_analysis import utils
 from segment_speed_utils import helpers
 from segment_speed_utils.project_vars import COMPILED_CACHED_VIEWS
-from update_vars import GCS_FILE_PATH, analysis_date
+from update_vars import analysis_date
+GCS_FILE_PATH = "/Volumes/One Touch/Transit_Job/GTFS_Only/"
 
 catalog = intake.open_catalog("*.yml")
 
@@ -252,11 +253,8 @@ if __name__ == "__main__":
     stops_route_gdf = assemble_stops(analysis_date)
     
     # let's save this to use as a crosswalk to fill in info
-    utils.geoparquet_gcs_export(
-        stops_route_gdf,
-        GCS_FILE_PATH,
-        "stops_to_route"
-    )
+    local_export_path = f"{GCS_FILE_PATH}stops_to_route_{analysis_date}.parquet"
+    stops_route_gdf.to_parquet(local_export_path)
     
     rail_stops = grab_rail_stops(stops_route_gdf)
     ferry_stops = grab_ferry_stops(stops_route_gdf)
@@ -266,11 +264,8 @@ if __name__ == "__main__":
         [rail_stops, ferry_stops, brt_stops]
     )
     
-    utils.geoparquet_gcs_export(
-        major_transit_stops, 
-        GCS_FILE_PATH, 
-        "rail_brt_ferry"
-    )
+    local_export_path = f"{GCS_FILE_PATH}rail_brt_ferry_{analysis_date}.parquet"
+    major_transit_stops.to_parquet(local_export_path)
     
     end = datetime.datetime.now()
     
